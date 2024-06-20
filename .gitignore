@@ -3,3 +3,4 @@ molecule/default/tests/__pycache__/
 .cache/
 .vscode/
 .DS_Store
+.env
