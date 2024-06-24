@@ -12,18 +12,14 @@ lint: |
   yamllint .
   ansible-lint
 platforms:
-  - name: instance
-    image: ${MOLECULE_DISTRO}
+  - name: instance-1
+    image: "${TEST_MOLECULE_DISTRO}"
+    # We cannot specify platform without breaking
+    # tests on armv8
     privileged: true
-    # cap_add:
-    #   - SYS_ADMIN
-    # security_opt:
-    #   - seccomp:unconfined
-    # tmpfs:
-    #   - /run
-    #   - /run/lock
+    cgroupns_mode: host
     volumes:
-      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+      - /sys/fs/cgroup:/sys/fs/cgroup:rw
     command: /lib/systemd/systemd
 provisioner:
   name: ansible
