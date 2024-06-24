@@ -28,7 +28,8 @@
   block:
     - name: Set Package Name
       ansible.builtin.set_fact:
-        deb_name: "splunkforwarder-{{ splunk_release }}-{{ splunk_forwarder_download[splunk_release]['string'] }}-linux-armv8.deb"
+        # Yes, only with armv8 does the L in linux have to be capitalized
+        deb_name: "splunkforwarder-{{ splunk_release }}-{{ splunk_forwarder_download[splunk_release]['string'] }}-Linux-armv8.deb"
 
     - name: Set Download URL
       ansible.builtin.set_fact:

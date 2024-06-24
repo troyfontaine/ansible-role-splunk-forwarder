@@ -17,6 +17,7 @@ galaxy_info:
         - bionic
         - focal
         - jammy
+        - noble
     - name: EL
       versions:
         - all
