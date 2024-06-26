@@ -1,5 +1,5 @@
 ---
-- name: Prepare instance for role execution
+- name: Prepare instance for role installation
   hosts: all
   become: true
   gather_facts: false
