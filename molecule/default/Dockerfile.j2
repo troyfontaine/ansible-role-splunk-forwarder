@@ -1,14 +1,10 @@
 # Molecule managed
 
 {% if item.registry is defined %}
-FROM {{ item.registry.url }}/{{ item.image }}
+FROM{% if item.platform is defined %} --platform={{ item.platform }} {% endif %}{{ item.registry.url }}/{{ item.image }}
 {% else %}
-FROM {{ item.image }}
+FROM{% if item.platform is defined %} --platform={{ item.platform }} {% endif %}{{ item.image }}
 {% endif %}
-
-#FROM oraclelinux:9
-#FROM amazonlinux:2023
-#FROM ubuntu:22.04
 
 RUN if cat /etc/os-release | grep 'ubuntu'; then export \
     DEBIAN_FRONTEND=noninteractive; apt-get update && apt-get install -y acl python3 sudo bash ca-certificates rsyslog postfix iproute2 systemd systemd-sysv unzip xz-utils && apt-get clean; \

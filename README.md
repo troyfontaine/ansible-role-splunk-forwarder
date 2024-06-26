@@ -8,11 +8,11 @@ This role will deploy the Splunk Universal Forwarder package on Linux systems ru
 
 ## Requirements
 
-This role is tested using Molecule via GitHub Actions with Ubuntu 16.04, 18.04, 20.04, 22.04, Oracle Linux 8 and Amazon Linux 2, but should probably work on any systemd based system on a compatible platform.
+This role is tested using Molecule via GitHub Actions with Ubuntu 20.04, 22.04, 24.04, Oracle Linux 9 and Amazon Linux 2023, but should probably work on any systemd based system on a compatible platform with Python 3.9.
 
 ## Functionality
 
-This role deploys Splunk Universal Forwarder from version 8.2.8 (AMD64) or 9.0.2 (ARM64) through to 9.1.0.1 (both architectures).
+This role deploys Splunk Universal Forwarder from version 8.2.8 (AMD64) or 9.0.2 (ARM64) through to 9.2.1 (both architectures).
 
 To use this role as part of a Packer build pipeline, set the variable `building_image` to `true`.
 

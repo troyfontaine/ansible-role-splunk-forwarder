@@ -2,26 +2,28 @@
 dependency:
   name: galaxy
   options:
-    ignore-certs: true
-    ignore-errors: true
-    requirements-file: collections.yml
+    requirements-file: requirements.yml
+
 driver:
   name: docker
-lint: |
-  set -e
-  yamllint .
-  ansible-lint
+
 platforms:
   - name: instance-1
-    image: "${TEST_MOLECULE_DISTRO}"
-    # We cannot specify platform without breaking
-    # tests on armv8
+    image: "${TEST_MOLECULE_DISTRO:-ubuntu:24.04}"
+    # We cannot specify linux/amd64 when testing on M1 Macs
+    platform: "${TEST_MOLECULE_PLATFORM:-linux/arm64}"
     privileged: true
     cgroupns_mode: host
     volumes:
       - /sys/fs/cgroup:/sys/fs/cgroup:rw
     command: /lib/systemd/systemd
+
 provisioner:
   name: ansible
+  lint:
+    name: |
+      yamllint
+      ansible-lint
+
 verifier:
   name: ansible

@@ -66,3 +66,4 @@ jobs:
           PY_COLORS: '1'
           ANSIBLE_FORCE_COLOR: '1'
           TEST_MOLECULE_DISTRO: ${{ matrix.distro }}
+          TEST_MOLECULE_PLATFORM: 'linux/amd64'
